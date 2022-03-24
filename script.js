@@ -82,8 +82,8 @@ function searchNews() {
     getNews(renderNews); 
     setTimeout(hideLoading, 1000);
     let timeAfter = Date.now();     
-    timeToSearch.innerHTML = ". Searching time " + (timeAfter - timeBefore).toFixed(3) + " second(s)";
-    newsTitle.innerHTML = "Related news to the key words "  + `"${searchKey}"`;    
+    timeToSearch.innerHTML = ". Searching time: " + (timeAfter - timeBefore).toFixed(3) + " second(s)";
+    newsTitle.innerHTML = "Related news to the key word(s): "  + `"${searchKey}"`;    
 }
 
 start();

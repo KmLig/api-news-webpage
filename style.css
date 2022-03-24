@@ -1,0 +1,46 @@
+*{
+    box-sizing: border-box;
+}
+body,h1,h2,h3,h4,h5,h6,p{
+    font-family: "Karma", sans-serif;           
+}
+#header{            
+    font-size: x-large;
+}
+#header h2:hover{
+    cursor: pointer;
+}     
+h1, .aboutme{            
+    text-align: center;                     
+}
+img.myPic{
+    width: 25%;
+    border-radius: 50%;
+    margin: 20px auto;
+}
+#imgFrame {
+    width: 270px;
+    height: 200px;
+}
+#imgFrame img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+#newList img{
+    width: 100%;
+    height: calc(width/2);
+}
+hr{
+    background-color: transparent;
+    border-style: none;
+    border-top-style: dashed;
+    border-color: black;
+    border-width: 5px;
+    width: 60%;
+    margin: 40px auto;
+}
+.spinner-group{
+    width: 150px;
+    margin: 25px auto;
+}

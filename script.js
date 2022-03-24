@@ -1,7 +1,7 @@
 let formSelectLang = document.getElementById("selectLang");
 let language = formSelectLang.value;
 let searchKey = "";
-let token = "9c3b10d3beb178312e1130fbab86bc74"
+let token = "9c3b10d3beb178312e1130fbab86bc74";
 let newsApi = `https://gnews.io/api/v4/top-headlines?lang=${language}&q=${searchKey}&max=8&token=${token}`;
 let timeToSearch = document.getElementById("searchingTime");
 let totalQuanArt = document.getElementById("totalArt");
@@ -10,22 +10,25 @@ let logo = document.getElementById("logo");
 let homePage = document.getElementById("homeIcon");
 let btnSearchNews = document.getElementById("searchNews");
 
+
 formSelectLang.onchange = getLang;
 logo.onclick = start;
 homePage.onclick = start;
 btnSearchNews.onclick = searchNews;
 
 function start() {
+    myLoadingOn();
+    console.log(document.getElementById("loading-group").style.display);
     language = formSelectLang.value;
     searchKey = "";
     newsApi = `https://gnews.io/api/v4/top-headlines?lang=${language}&q=${searchKey}&max=8&token=${token}`;
-    getNews(renderNews);        
-    myDisplayer(); 
-    timeToSearch
-    
+    getNews(renderNews);    
+    timeToSearch.innerHTML = "";    
+    setTimeout(myLoadingOff, 1000);  
+    console.log(document.getElementById("loading-group").style.display);
 }
 
-function getNews(callback){
+function getNews(callback) {
     fetch(newsApi)
     .then(function (response) {
         return response.json();
@@ -34,7 +37,7 @@ function getNews(callback){
     document.getElementById("newsTitle").innerHTML = "Top headlines in the day";
 }
 
-function renderNews(news){
+function renderNews(news) {
     console.log(news);
     totalQuanArt.innerHTML = "About " + news.totalArticles + " results"; 
     let newsListBlock = document.querySelector("#newsList");    
@@ -55,29 +58,33 @@ function renderNews(news){
     newsListBlock.innerHTML = htmls.join("");
 }
 
-function myDisplayer(){
+function myLoadingOn() {
+    document.getElementById("loading-group").style.display = "block";
+}
+function myLoadingOff() {
     document.getElementById("loading-group").style.display = "none";
 }
-
 function getLang() {
+    myLoadingOn();
     language = selectLang.value;        
     searchKey = "";
     timeToSearch.innerHTML= "";    
     newsApi = `https://gnews.io/api/v4/top-headlines?lang=${language}&q=${searchKey}&max=8&token=${token}`;     
     getNews(renderNews);      
-    myDisplayer();
+    setTimeout(myLoadingOff, 1000);
 }
 
-function searchNews(){ 
+function searchNews() { 
+    myLoadingOn();
     searchKey =  document.getElementById("searchKey").value;
     document.getElementById("searchKey").value = "";
     newsApi = `https://gnews.io/api/v4/search?lang=${language}&q=${searchKey}&max=8&token=${token}`;       
     let timeBefore = Date.now();  
     getNews(renderNews); 
-    myDisplayer();
+    setTimeout(myLoadingOff, 1000);
     let timeAfter = Date.now();     
-    timeToSearch.innerHTML = ". Searching time " + (timeAfter - timeBefore).toFixed(10);
+    timeToSearch.innerHTML = ". Searching time " + (timeAfter - timeBefore).toFixed(3) + " second(s)";
     newsTitle.innerHTML = "Related news to the key words "  + searchKey;    
 }
 
-//start();
+start();

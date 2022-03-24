@@ -34,7 +34,7 @@ function getNews(callback) {
         return response.json();
     })    
     .then(callback);
-    document.getElementById("newsTitle").innerHTML = "Top headlines in the day";
+    newsTitle.innerHTML = "Top headlines in the day";
 }
 
 function renderNews(news) {
@@ -84,7 +84,7 @@ function searchNews() {
     setTimeout(hideLoading, 1000);
     let timeAfter = Date.now();     
     timeToSearch.innerHTML = ". Searching time " + (timeAfter - timeBefore).toFixed(3) + " second(s)";
-    newsTitle.innerHTML = "Related news to the key words "  + searchKey;    
+    newsTitle.innerHTML = "Related news to the key words "  + `"${searchKey}"`;    
 }
 
 start();

@@ -55,21 +55,17 @@ function myDisplayer(){
 }
 
 function getLang() {
-    language = selectLang.value;  
-    console.log(newsApi);    
-    searchKey = "";
-    console.log(newsApi);
+    language = selectLang.value;        
+    searchKey = "";    
     newsApi = `https://gnews.io/api/v4/top-headlines?lang=${language}&q=${searchKey}&max=8&token=138edba5f204b70bd1b71d0ae68faaaf`;     
-    getNews(renderNews);  
-    console.log(newsApi);
+    getNews(renderNews);      
     myDisplayer();
 }
 
 function searchNews(){ 
     searchKey =  document.getElementById("searchKey").value;
     document.getElementById("searchKey").value = "";
-    newsApi = `https://gnews.io/api/v4/search?lang=${language}&q=${searchKey}&max=8&token=138edba5f204b70bd1b71d0ae68faaaf`;   
-    console.log(newsApi);
+    newsApi = `https://gnews.io/api/v4/search?lang=${language}&q=${searchKey}&max=8&token=138edba5f204b70bd1b71d0ae68faaaf`;       
     let timeBefore = Date.now();  
     getNews(renderNews); 
     myDisplayer();

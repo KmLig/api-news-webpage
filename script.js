@@ -1,7 +1,7 @@
 let formSelectLang = document.getElementById("selectLang");
 let language = formSelectLang.value;
 let searchKey = "";
-let token = "9c3b10d3beb178312e1130fbab86bc74";
+let token = "138edba5f204b70bd1b71d0ae68faaaf";
 let newsApi = `https://gnews.io/api/v4/top-headlines?lang=${language}&q=${searchKey}&max=8&token=${token}`;
 let timeToSearch = document.getElementById("searchingTime");
 let totalQuanArt = document.getElementById("totalArt");
@@ -17,15 +17,13 @@ homePage.onclick = start;
 btnSearchNews.onclick = searchNews;
 
 function start() {
-    showLoading();
-    console.log(document.getElementById("loading-group").style.display);
+    showLoading();    
     language = formSelectLang.value;
     searchKey = "";
     newsApi = `https://gnews.io/api/v4/top-headlines?lang=${language}&q=${searchKey}&max=8&token=${token}`;
     getNews(renderNews);    
     timeToSearch.innerHTML = "";    
-    setTimeout(hideLoading, 1000);  
-    console.log(document.getElementById("loading-group").style.display);
+    setTimeout(hideLoading, 1000);      
 }
 
 function getNews(callback) {
@@ -64,6 +62,7 @@ function showLoading() {
 function hideLoading() {
     document.getElementById("loading-group").style.display = "none";
 }
+
 function getLang() {
     showLoading();
     language = selectLang.value;        

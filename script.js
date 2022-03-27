@@ -65,7 +65,7 @@ function hideLoading() {
 
 function getLang() {
     showLoading();
-    language = selectLang.value;        
+    language = formSelectLang.value;        
     searchKey = "";
     timeToSearch.innerHTML= "";    
     newsApi = `https://gnews.io/api/v4/top-headlines?lang=${language}&q=${searchKey}&max=8&token=${token}`;     
